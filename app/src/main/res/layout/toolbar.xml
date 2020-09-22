@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/toolbar">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nagivation"
@@ -17,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation"
-        android:background="@color/backrgound"
-        app:itemIconTint="@color/theme"
-        app:itemTextColor="@color/theme"/>
+        android:background="@color/theme"
+        app:itemIconTint="@color/textv3"
+        app:itemTextColor="@color/textv3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

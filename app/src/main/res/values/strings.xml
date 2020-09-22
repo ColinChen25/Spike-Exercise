@@ -10,4 +10,19 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="loginWelcomeTextVal">Welcome Back!</string>
+
+    <!--text string for quick refer-->
+    <string name="address">Address</string>
+    <string name="hiveName">Hive name</string>
+    <string name="hiveInfo">Hive Information</string>
+    <string name="resOIns">Result of Inspections</string>
+    <string name="health">Health</string>
+    <string name="honeyStore">Honey Stores</string>
+    <string name="queenProd">Queen Production</string>
+    <string name="hiveEquipment">Equipment on the hive</string>
+    <string name="invenEquipment">Equipment on inventory</string>
+    <string name="losses">Losses</string>
+    <string name="Gains">Gains</string>
+
+
 </resources>
