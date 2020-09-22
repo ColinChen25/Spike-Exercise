@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hive_info_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_marginTop="0dp">
+
+
+    <RelativeLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1000dp">
+
+            <TextView
+                android:id="@+id/invenEquipment"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Equipment in the inventory"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hiveEquipmentInfo" />
+
+            <TextView
+                android:id="@+id/invenEquipmentInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="awefawefwef"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/invenEquipment" />
+
+            <TextView
+                android:id="@+id/hiveEquipmentInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hiveEquipment" />
+
+            <TextView
+                android:id="@+id/queenProd"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Queen Production"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/honeyStoresInfo" />
+
+            <TextView
+                android:id="@+id/queenProdInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/hiveEquipment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/queenProd" />
+
+            <TextView
+                android:id="@+id/hiveEquipment"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Equipment on the hive"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/queenProdInfo" />
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:onClick="selectImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/hiveName"
+                android:layout_width="200dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Hive 1"
+                android:textColor="@color/backrgound"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Address"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hiveName" />
+
+            <TextView
+                android:id="@+id/addressInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
+
+            <TextView
+                android:id="@+id/resOInspection"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Result of Inspections"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressInfo" />
+
+            <TextView
+                android:id="@+id/resOInspectionInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resOInspection" />
+
+            <TextView
+                android:id="@+id/health"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Health"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resOInspectionInfo" />
+
+            <TextView
+                android:id="@+id/healthInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/health" />
+
+            <TextView
+                android:id="@+id/honeyStoresInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/honeyStores" />
+
+            <TextView
+                android:id="@+id/honeyStores"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Honey Stores"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthInfo" />
+
+            <TextView
+                android:id="@+id/losses"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Losses"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/invenEquipmentInfo" />
+
+            <TextView
+                android:id="@+id/lossesInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/losses" />
+
+            <TextView
+                android:id="@+id/gains"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="Gains"
+                android:textColor="@color/textv2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lossesInfo" />
+
+            <TextView
+                android:id="@+id/gainsInfo"
+                android:layout_width="354dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:text="weafawefa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gains" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

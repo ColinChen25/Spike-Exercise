@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    @author Dung V Vo
+    bottom navigation menu design
+-->
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHives"
+        android:icon="@drawable/ic_bee_hive_icon_0"
+        android:title="Hives" />
+    <item
+        android:id="@+id/navSearch"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search" />
+    <item
+        android:id="@+id/navProfile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile" />
+</menu>
