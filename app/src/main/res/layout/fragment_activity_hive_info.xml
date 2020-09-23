@@ -6,20 +6,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:theme="@style/TextInputLayoutStyle"
     android:id="@+id/hive_info_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_marginTop="0dp">
 
 <!--    Set up for nested scroll view   -->
-    <RelativeLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -28,12 +21,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/invenEquipment"
@@ -252,7 +245,7 @@
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/Gains"
+                android:text="@string/gains"
                 android:textColor="@color/textv2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
