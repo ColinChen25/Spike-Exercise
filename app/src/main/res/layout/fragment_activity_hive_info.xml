@@ -10,7 +10,8 @@
     android:id="@+id/hive_info_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_marginTop="0dp">
+    tools:layout_marginTop="0dp"
+    tools:context=".Man">
 
 <!--    Set up for nested scroll view   -->
 
