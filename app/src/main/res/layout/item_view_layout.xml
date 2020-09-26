@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author: Dung Viet Vo-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rectangle_shape_3dp"
+    android:id="@+id/item_view_constraint_layout">
+
+    <ImageView
+        android:id="@+id/hive_picture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_bee_hive_icon_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/vertical_barrier_picture_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierAllowsGoneWidgets="false"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="hive_picture"
+        tools:layout_editor_absoluteX="58dp" />
+
+    <TextView
+        android:id="@+id/hive_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:autoSizeMaxTextSize="15sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="0.5sp"
+        android:autoSizeTextType="uniform"
+        android:text="Hive's Name"
+        android:textColor="@color/textv3"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/address_linear_layout_item_view"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="6dp"
+        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info"
+        app:layout_constraintTop_toBottomOf="@id/hive_Name">
+
+        <TextView
+            android:id="@+id/address_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:autoSizeMaxTextSize="15sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="0.5sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="Address:"
+            android:textColor="@color/textv3" />
+
+        <TextView
+            android:id="@+id/address_linear_layout_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:autoSizeMaxTextSize="15sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="0.5sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="415 W Gilman Street"
+            android:textColor="@color/textv3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gender_linear_layout_item_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info"
+        tools:layout_editor_absoluteY="66dp">
+
+        <ImageView
+            android:id="@+id/gender_person_icon_image_view"
+            android:layout_marginTop="3dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/ic_heart_04"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/gender_linear_layout_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="3dp"
+            android:autoSizeMaxTextSize="15sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="0.5sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="Health:"
+            android:textColor="@color/textv3"/>
+
+        <TextView
+            android:id="@+id/Gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/gender_linear_layout_item_view"
+            app:layout_constraintStart_toEndOf="@id/gender_linear_layout_item_view"
+            app:layout_constraintBottom_toBottomOf="@id/gender_linear_layout_item_view"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="6dp"
+            android:text="120"
+            android:textColor="@color/textv3"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeStepGranularity="0.5sp"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/queen_prod_linear_layout_item_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toEndOf="@+id/gender_linear_layout_item_view"
+        tools:layout_editor_absoluteY="66dp">
+
+        <ImageView
+            android:id="@+id/queen_icon_image_view"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_ribbon_01" />
+
+        <TextView
+            android:id="@+id/queen_production_linear_layout_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="3dp"
+            android:autoSizeMaxTextSize="15sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="0.5sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:text="Queen Production:"
+            android:textColor="@color/textv3" />
+
+        <TextView
+            android:id="@+id/queen_production_linear_layout_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="3dp"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="0.5sp"
+            android:autoSizeTextType="uniform"
+            android:text="120"
+            android:textColor="@color/textv3"
+            app:layout_constraintBottom_toBottomOf="@id/gender_linear_layout_item_view"
+            app:layout_constraintStart_toEndOf="@id/gender_linear_layout_item_view"
+            app:layout_constraintTop_toTopOf="@id/gender_linear_layout_item_view"
+
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
