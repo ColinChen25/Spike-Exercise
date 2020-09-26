@@ -10,8 +10,9 @@
     android:id="@+id/hive_info_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_marginTop="0dp"
-    tools:context=".Man">
+    tools:layout_marginTop="0dp">
+<!--  Temporary comment out as backend is not yet designed  -->
+    // tools:context=".Man">
 
 <!--    Set up for nested scroll view   -->
 
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/invenEquipment"
+                android:id="@+id/info_inven_equipment"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -39,10 +40,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hiveEquipmentInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_hive_equipment_data" />
 
             <TextView
-                android:id="@+id/invenEquipmentInfo"
+                android:id="@+id/info_inven_equipment_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -50,10 +51,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/invenEquipment" />
+                app:layout_constraintTop_toBottomOf="@+id/info_inven_equipment" />
 
             <TextView
-                android:id="@+id/hiveEquipmentInfo"
+                android:id="@+id/info_hive_equipment_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -64,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/hiveEquipment" />
 
             <TextView
-                android:id="@+id/queenProd"
+                android:id="@+id/info_queen_production"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -73,10 +74,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/honeyStoresInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_honey_stores_data" />
 
             <TextView
-                android:id="@+id/queenProdInfo"
+                android:id="@+id/info_queen_production_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -85,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/queenProd" />
+                app:layout_constraintTop_toBottomOf="@+id/info_queen_production" />
 
             <TextView
                 android:id="@+id/hiveEquipment"
@@ -97,10 +98,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/queenProdInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_queen_production_data" />
 
             <ImageView
-                android:id="@+id/profilePic"
+                android:id="@+id/info_profile_pic"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_marginTop="30dp"
@@ -112,7 +113,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/hiveName"
+                android:id="@+id/info_hive_name"
                 android:layout_width="200dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="16dp"
@@ -124,10 +125,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+                app:layout_constraintTop_toBottomOf="@+id/info_profile_pic" />
 
             <TextView
-                android:id="@+id/address"
+                android:id="@+id/info_address"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -136,10 +137,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hiveName" />
+                app:layout_constraintTop_toBottomOf="@+id/info_hive_name" />
 
             <TextView
-                android:id="@+id/addressInfo"
+                android:id="@+id/info_address_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -147,10 +148,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address" />
+                app:layout_constraintTop_toBottomOf="@+id/info_address" />
 
             <TextView
-                android:id="@+id/resOInspection"
+                android:id="@+id/info_res_o_ins"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -159,10 +160,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addressInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_address_data" />
 
             <TextView
-                android:id="@+id/resOInspectionInfo"
+                android:id="@+id/hive_res_o_ins_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -170,10 +171,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/resOInspection" />
+                app:layout_constraintTop_toBottomOf="@+id/info_res_o_ins" />
 
             <TextView
-                android:id="@+id/health"
+                android:id="@+id/info_health"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -182,10 +183,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/resOInspectionInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/hive_res_o_ins_data" />
 
             <TextView
-                android:id="@+id/healthInfo"
+                android:id="@+id/info_health_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -193,10 +194,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/health" />
+                app:layout_constraintTop_toBottomOf="@+id/info_health" />
 
             <TextView
-                android:id="@+id/honeyStoresInfo"
+                android:id="@+id/info_honey_stores_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -204,10 +205,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/honeyStores" />
+                app:layout_constraintTop_toBottomOf="@+id/info_honey_stores" />
 
             <TextView
-                android:id="@+id/honeyStores"
+                android:id="@+id/info_honey_stores"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -216,10 +217,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/healthInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_health_data" />
 
             <TextView
-                android:id="@+id/losses"
+                android:id="@+id/info_losses"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -228,10 +229,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/invenEquipmentInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_inven_equipment_data" />
 
             <TextView
-                android:id="@+id/lossesInfo"
+                android:id="@+id/info_losses_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -239,10 +240,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/losses" />
+                app:layout_constraintTop_toBottomOf="@+id/info_losses" />
 
             <TextView
-                android:id="@+id/gains"
+                android:id="@+id/info_gains"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -251,10 +252,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lossesInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/info_losses_data" />
 
             <TextView
-                android:id="@+id/gainsInfo"
+                android:id="@+id/info_gains_data"
                 android:layout_width="354dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="12dp"
@@ -262,7 +263,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gains" />
+                app:layout_constraintTop_toBottomOf="@+id/info_gains" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
