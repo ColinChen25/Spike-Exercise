@@ -10,8 +10,8 @@
     android:layout_marginTop="4dp"
     app:layout_constraintEnd_toEndOf="parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/rectangle_shape_3dp"
     android:id="@+id/item_view_constraint_layout">
+    <!--android:background="@drawable/rectangle_shape_3dp"-->
 
     <ImageView
         android:id="@+id/hive_picture"
@@ -107,8 +107,8 @@
             android:layout_marginTop="3dp"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:src="@drawable/ic_heart_04"
             android:scaleType="fitXY" />
+        <!--android:src="@drawable/ic_heart_04"-->
 
         <TextView
             android:id="@+id/gender_linear_layout_text_view"
@@ -163,8 +163,8 @@
             android:layout_height="17dp"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_ribbon_01" />
+            android:scaleType="fitXY" />
+        <!--android:src="@drawable/ic_ribbon_01"-->
 
         <TextView
             android:id="@+id/queen_production_linear_layout_text_view"
