@@ -43,16 +43,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_register);
         regUsername = findViewById(R.id.regUsername);
-        regHiveName = findViewById(R.id.regHiveName);
+       // regHiveName = findViewById(R.id.regHiveName);
         regAddress = findViewById(R.id.regAddress);
-        regResultInspection = findViewById(R.id.regResultInspection);
-        regHealth = findViewById(R.id.regHealth);
-        regHoneyStores = findViewById(R.id.regHoneyStores);
-        regQueenProduction = findViewById(R.id.regQueenProduction);
-        regHiveEquip = findViewById(R.id.regHiveEquip);
-        regInvenEquip = findViewById(R.id.regInvenEquip);
-        regLosses = findViewById(R.id.regLosses);
-        regGains = findViewById(R.id.regGains);
+//        regResultInspection = findViewById(R.id.regResultInspection);
+//        regHealth = findViewById(R.id.regHealth);
+//        regHoneyStores = findViewById(R.id.regHoneyStores);
+//        regQueenProduction = findViewById(R.id.regQueenProduction);
+//        regHiveEquip = findViewById(R.id.regHiveEquip);
+//        regInvenEquip = findViewById(R.id.regInvenEquip);
+//        regLosses = findViewById(R.id.regLosses);
+//        regGains = findViewById(R.id.regGains);
         regPassword = findViewById(R.id.regPassword);
 
         buttonRegister = findViewById(R.id.btnRegister);
