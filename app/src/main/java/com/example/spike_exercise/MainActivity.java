@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_activity_hive_edit);
+        setContentView(R.layout.activity_login);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
 //        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);

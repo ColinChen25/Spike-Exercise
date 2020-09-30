@@ -27,8 +27,8 @@
                 android:clickable="true"
                 android:contentDescription="@string/regProfilePicDescription"
                 android:focusable="auto"
-                android:foreground="@drawable/ic_launcher_foreground"
-                android:scaleType="fitCenter"
+                android:scaleType="centerInside"
+                android:src="@drawable/add_picture"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -36,6 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.05"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Image.PILL" />
+<!--                android:foreground="@drawable/ic_launcher_foreground"-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/regUsernameLayout"
