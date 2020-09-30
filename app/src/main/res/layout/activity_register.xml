@@ -18,45 +18,45 @@
             android:layout_height="wrap_content">
 
 
-            <ImageView
-                android:id="@+id/profilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/regProfilePic"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:background="@color/colorPrimary"
                 android:clickable="true"
-                android:contentDescription="Profile Picture"
+                android:contentDescription="@string/regProfilePicDescription"
+                android:focusable="auto"
+                android:foreground="@drawable/ic_launcher_foreground"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.1"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintVertical_bias="0.05"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Image.PILL" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/regUsernameLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
-                android:layout_marginTop="15sp"
-                android:layout_marginRight="25sp"
-                android:hint="Username"
-                android:measureWithLargestChild="true"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/regUsernameHint"
                 android:textColorHint="@color/text"
-                app:layout_constraintTop_toBottomOf="@id/profilePic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/regProfilePic">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:focusable="auto"
-                    android:textColor="@color/text"
-                    android:textColorHint="@color/text"
-                    />
+                    android:textColor="@color/text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -64,25 +64,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginRight="25sp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/regEmailHint"
                 android:textColorHint="@color/text"
-                app:layout_constraintTop_toBottomOf="@id/regUsernameLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/regUsernameLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:hint="Email"
-                    android:textColor="@color/text"
-                    android:textColorHint="@color/text" />
+                    android:textColor="@color/text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,29 +85,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginRight="25sp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/regPasswordHint"
                 android:textColorHint="@color/text"
-                app:layout_constraintTop_toBottomOf="@id/regEmailLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/regEmailLayout"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@android:color/white"
-                >
-
+                app:passwordToggleTint="@android:color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textColor="@color/text"
-                    android:textColorHint="@color/text" />
+                    android:textColor="@color/text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -120,25 +108,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginRight="25sp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/regAddressHint"
                 android:textColorHint="@color/text"
-                app:layout_constraintTop_toBottomOf="@id/regPasswordLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/regPasswordLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:hint="Apiary Address"
-                    android:textColor="@color/text"
-                    android:textColorHint="@color/text" />
+                    android:textColor="@color/text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -146,25 +129,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginRight="25sp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/regPhoneHint"
                 android:textColorHint="@color/text"
-                app:layout_constraintTop_toBottomOf="@id/regAddressLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/regAddressLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:hint="Phone Number"
-                    android:textColor="@color/text"
-                    android:textColorHint="@color/text" />
+                    android:textColor="@color/text" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -172,10 +150,10 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="10sp"
                 android:layout_marginLeft="25sp"
+                android:layout_marginTop="10sp"
                 android:layout_marginRight="25sp"
-                android:text="SIGN UP"
+                android:text="@string/btnRegisterText"
                 android:textAllCaps="true"
                 android:textColor="#000000"
                 android:textSize="18sp"
@@ -188,19 +166,20 @@
                 android:id="@+id/regToLoginLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="15sp"
                 android:orientation="horizontal"
-                android:layout_marginTop="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnRegister"
-                >
+                app:layout_constraintVertical_bias="0.9">
 
                 <TextView
                     android:id="@+id/regToLoginText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Already had an account?"
+                    android:text="@string/regToLoginText"
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
 
@@ -211,7 +190,7 @@
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
                     android:fadingEdge="none"
-                    android:text="Sign In"
+                    android:text="@string/btnRegToLoginText"
                     android:textAllCaps="false"
                     android:textColor="@color/text"
                     android:textSize="18sp"

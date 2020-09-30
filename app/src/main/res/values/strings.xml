@@ -24,6 +24,21 @@
     <string name="losses">Losses</string>
     <string name="gains">Gains</string>
     <string name="save">SAVE</string>
+    <string name="regProfilePicDescription">Profile Picture</string>
+    <string name="btnRegisterText">SIGN UP</string>
+    <string name="regToLoginText">Already had an account?</string>
+    <string name="btnRegToLoginText">Sign In</string>
+    <string name="regUsernameHint">Username</string>
+    <string name="regEmailHint">Email</string>
+    <string name="regPasswordHint">Password</string>
+    <string name="regAddressHint">Apiary Address</string>
+    <string name="regPhoneHint">Phone Number</string>
+    <string name="loginWelcomeText">Welcome Back!</string>
+    <string name="loginUsernameHint">Username</string>
+    <string name="loginPasswordHint">Password</string>
+    <string name="btnLoginText">SIGN IN</string>
+    <string name="loginToRegText">Don\'t have an account?</string>
+    <string name="btnLoginToRegText">Sign Up</string>
 
 
 </resources>
