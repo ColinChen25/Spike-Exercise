@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.example.spike_exercise.data.Hive;
+import com.example.spike_exercise.data.Hives;
 
 public class HiveEdit extends AppCompatActivity {
     EditText ed_hivename;
@@ -43,8 +43,10 @@ public class HiveEdit extends AppCompatActivity {
         saveButton = findViewById(R.id.edit_save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(ed_hivename.getText().toString().isEmpty()){
-                    Toast.makeText(HiveEdit.this, "Please Enter the Name of the Hive", Toast.LENGTH_SHORT).show();
+                if(ed_hivename.getText().toString().isEmpty() || ed_inspection.toString().isEmpty() || ed_health.toString().isEmpty()
+                        || ed_honeystores.toString().isEmpty() || ed_queenprod.toString().isEmpty() || ed_inven_equip.toString().isEmpty()
+                        || ed_hive_equip.toString().isEmpty() || ed_loss.toString().isEmpty() || ed_gain.toString().isEmpty()){
+                    Toast.makeText(HiveEdit.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
                 } else {
                     // Retrieve data from the input fields
                     String hivename = ed_hivename.getText().toString().trim();
@@ -57,8 +59,11 @@ public class HiveEdit extends AppCompatActivity {
                     String loss = ed_loss.getText().toString().trim();
                     String gain = ed_gain.getText().toString().trim();
 
+                    String username = getIntent().getStringExtra("current_username");
                     // Create a new hiveinfo object
-                    Hive hive = new Hive();
+                    Hives hive = new Hives();
+
+                    hive.setUsername(username);
                     hive.setHivename(hivename);
                     hive.setInspection_results(inspection);
 
@@ -70,10 +75,10 @@ public class HiveEdit extends AppCompatActivity {
                     hive.setLosses(loss.equals("null")?0:Integer.parseInt(loss));
                     hive.setGains(gain.equals("null")?0:Integer.parseInt(gain));
 
-                    Backendless.Persistence.save(hive, new AsyncCallback<Hive>() {
+                    Backendless.Persistence.save(hive, new AsyncCallback<Hives>() {
 
                         @Override
-                        public void handleResponse(Hive response) {
+                        public void handleResponse(Hives response) {
                             Toast.makeText(HiveEdit.this, "New Hive saved successfully" , Toast.LENGTH_SHORT).show();
                             HiveEdit.this.finish();
                         }

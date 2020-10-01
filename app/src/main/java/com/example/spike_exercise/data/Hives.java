@@ -1,7 +1,6 @@
 package com.example.spike_exercise.data;
 
-public class Hive {
-    private String address;
+public class Hives {
     private String username;
     private int gains;
     private int health;
@@ -14,13 +13,6 @@ public class Hive {
     private int queen_production;
     private String objectId;
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getUsername() {
         return username;
