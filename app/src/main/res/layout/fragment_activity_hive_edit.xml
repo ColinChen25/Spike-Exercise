@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/TextInputLayoutStyle"
+    android:id="@+id/honeystores"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/TextInputLayoutStyle">
 
 
     <androidx.core.widget.NestedScrollView
@@ -46,9 +47,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_info">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hivename"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text"/>
+                    android:textColor="@color/text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,6 +69,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inspection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -88,6 +91,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_res_o_ins">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/health"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -109,6 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_health">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/honeystores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -130,6 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_honey_stores">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/queenprod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -151,6 +157,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_queen_production">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hive_equip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -172,6 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_equipment">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inven_equip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -193,6 +201,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_inven_equipment">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loss"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -214,6 +223,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_losses">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />

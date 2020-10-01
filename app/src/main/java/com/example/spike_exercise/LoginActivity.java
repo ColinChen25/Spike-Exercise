@@ -49,8 +49,9 @@ public class LoginActivity extends AppCompatActivity {
                     Backendless.UserService.login(username, password, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
+                            ApplicationClass.user = response;
                             Toast.makeText(LoginActivity.this, "Successful Login", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, HiveInfo.class);
+                            Intent intent = new Intent(LoginActivity.this, HivesList.class);
                             String currentUser = (String) Backendless.UserService.CurrentUser().getProperty("username");
                             intent.putExtra("current_user", currentUser);
                             startActivity(intent);
@@ -87,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     Backendless.Data.of(BackendlessUser.class).findById(userObjectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
-                            startActivity(new Intent(LoginActivity.this, HiveInfo.class));
+                            startActivity(new Intent(LoginActivity.this, HivesList.class));
                             LoginActivity.this.finish();
                         }
 
