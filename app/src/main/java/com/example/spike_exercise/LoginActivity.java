@@ -16,7 +16,7 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.local.UserIdStorageFactory;
 
 public class LoginActivity extends AppCompatActivity {
-
+    // Components of the activity
     EditText loginUsernameField;
     EditText loginPasswordField;
     Button loginSignInButton;
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void handleResponse(BackendlessUser response) {
                             Toast.makeText(LoginActivity.this, "Successful Login", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, HiveInfo.class);
+                            Intent intent = new Intent(LoginActivity.this, HivesList.class);
                             String currentUser = (String) Backendless.UserService.CurrentUser().getProperty("username");
                             intent.putExtra("current_user", currentUser);
                             startActivity(intent);
@@ -87,7 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                     Backendless.Data.of(BackendlessUser.class).findById(userObjectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
-                            startActivity(new Intent(LoginActivity.this, HiveInfo.class));
+                            // Main screen that is shown to the user after a successful login
+                            startActivity(new Intent(LoginActivity.this, HivesList.class));
                             LoginActivity.this.finish();
                         }
 
