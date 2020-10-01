@@ -74,6 +74,7 @@ public class HiveAdd extends AppCompatActivity {
                     hive.setHive_equipment(hive_equip.equals("null")?0:Integer.parseInt(hive_equip));
                     hive.setLosses(loss.equals("null")?0:Integer.parseInt(loss));
                     hive.setGains(gain.equals("null")?0:Integer.parseInt(gain));
+                    hive.setAddress(ApplicationClass.user.getProperty("address").toString());
 
                     Backendless.Persistence.save(hive, new AsyncCallback<Hives>() {
 
