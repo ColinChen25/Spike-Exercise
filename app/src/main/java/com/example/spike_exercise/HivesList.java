@@ -42,10 +42,12 @@ public class HivesList extends AppCompatActivity {
         Backendless.Persistence.of(Hives.class).find(query, new AsyncCallback<List<Hives>>() {
             @Override
             public void handleResponse(List<Hives> response) {
+
                 ApplicationClass.hives = response;
                 adapter = new HivesAdapter(HivesList.this, response);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(HivesList.this));
+
             }
 
             @Override

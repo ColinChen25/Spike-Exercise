@@ -24,5 +24,6 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText(ApplicationClass.user.getProperty("email").toString());
 
 
+
     }
 }

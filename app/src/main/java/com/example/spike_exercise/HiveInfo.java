@@ -1,7 +1,9 @@
 package com.example.spike_exercise;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
+
 
 import org.w3c.dom.Text;
 
@@ -36,6 +39,7 @@ public class HiveInfo extends AppCompatActivity {
     String name_of_hive;
     int index;
     Button editButton;
+    Button deleteButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +61,7 @@ public class HiveInfo extends AppCompatActivity {
         name_of_hive = getIntent().getStringExtra("hive_name");
         info_hive_name.setText(name_of_hive);
         editButton = findViewById(R.id.edit_button);
+        deleteButton = findViewById(R.id.delete_button);
 
         index = getIntent().getIntExtra("index", 0);
 
@@ -81,7 +86,10 @@ public class HiveInfo extends AppCompatActivity {
 
             @Override
             public void handleFault(BackendlessFault fault) {
+
+                //
                 Toast.makeText(HiveInfo.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -116,6 +124,47 @@ public class HiveInfo extends AppCompatActivity {
                 });
             }
         });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(HiveInfo.this);
+                dialog.setMessage("Are you sure you want to delete this hive?");
+                dialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Backendless.Persistence.of(Hives.class).remove(ApplicationClass.hives.get(index), new AsyncCallback<Long>() {
+                            @Override
+                            public void handleResponse(Long response) {
+                                ApplicationClass.hives.remove(index);
+                                Toast.makeText(HiveInfo.this, "Hive Has Been Removed", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(HiveInfo.this, HivesList.class);
+                                startActivity(intent);
+                                HiveInfo.this.finish();
+
+
+                            }
+
+                            @Override
+                            public void handleFault(BackendlessFault fault) {
+                                Toast.makeText(HiveInfo.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                dialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.show();
+
+            }
+        });
+
+
 
     }
 }
