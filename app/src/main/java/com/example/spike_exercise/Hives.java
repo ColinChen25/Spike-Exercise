@@ -1,18 +1,26 @@
-package com.example.spike_exercise.data;
+package com.example.spike_exercise;
 
 public class Hives {
     private String username;
     private int gains;
     private int health;
-    private int hive_equiptment;
+    private int hive_equipment;
     private String hivename;
     private int honey_stores;
     private String inspection_results;
     private int inventory_equipment;
     private int losses;
     private int queen_production;
+    private String address;
     private String objectId;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getUsername() {
         return username;
@@ -38,12 +46,12 @@ public class Hives {
         this.health = health;
     }
 
-    public int getHive_equiptment() {
-        return hive_equiptment;
+    public int getHive_equipment() {
+        return hive_equipment;
     }
 
-    public void setHive_equiptment(int hive_equiptment) {
-        this.hive_equiptment = hive_equiptment;
+    public void setHive_equipment(int hive_equiptment) {
+        this.hive_equipment = hive_equiptment;
     }
 
     public String getHivename() {

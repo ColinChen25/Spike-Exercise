@@ -12,74 +12,82 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.example.spike_exercise.data.Hives;
 
 public class HiveEdit extends AppCompatActivity {
-    EditText ed_hivename;
-    EditText ed_inspection;
-    EditText ed_health;
-    EditText ed_honeystores;
-    EditText ed_queenprod;
-    EditText ed_hive_equip;
-    EditText ed_inven_equip;
-    EditText ed_loss;
-    EditText ed_gain;
-    Button saveButton;
+
+    final String INT_ERR_MSG = "Health, Honey Stores, Queen Production, Hive Equipment \nInventory Equipment, Loss, and Gains must be of number value";
+    EditText hivename;
+    EditText inspection;
+    EditText health;
+    EditText honeystores;
+    EditText queenprod;
+    EditText hive_equip;
+    EditText inven_equip;
+    EditText edit_loss;
+    EditText edit_gains;
+    int index;
+
+    Button edit_save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_activity_hive_edit);
 
-        ed_hivename = findViewById(R.id.hivename);
-        ed_inspection = findViewById(R.id.inspection);
-        ed_health = findViewById(R.id.health);
-        ed_honeystores = findViewById(R.id.honeystores);
-        ed_queenprod = findViewById(R.id.queenprod);
-        ed_inven_equip = findViewById(R.id.inven_equip);
-        ed_hive_equip = findViewById(R.id.hive_equip);
-        ed_loss = findViewById(R.id.loss);
-        ed_gain = findViewById(R.id.gain);
+        hivename = findViewById(R.id.edit_hivename);
+        inspection = findViewById(R.id.edit_inspection);
+        health = findViewById(R.id.edit_health);
+        honeystores = findViewById(R.id.edit_honeystores);
+        queenprod = findViewById(R.id.queenprod);
+        hive_equip = findViewById(R.id.hive_equip);
+        inven_equip = findViewById(R.id.inven_equip);
+        edit_loss = findViewById(R.id.edit_loss);
+        edit_gains = findViewById(R.id.gain);
+        edit_save = findViewById(R.id.edit_save);
+        index = getIntent().getIntExtra("index", 0);
 
-        saveButton = findViewById(R.id.edit_save);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        // set the fields from info hive
+        hivename.setText(getIntent().getStringExtra("hivename"));
+        inspection.setText(getIntent().getStringExtra("inspection_results"));
+        health.setText(getIntent().getStringExtra("health"));
+        honeystores.setText(getIntent().getStringExtra("honey_stores"));
+        queenprod.setText(getIntent().getStringExtra("queen_production"));
+        hive_equip.setText(getIntent().getStringExtra("hive_equipment"));
+        inven_equip.setText(getIntent().getStringExtra("inventory_equipment"));
+        edit_loss.setText(getIntent().getStringExtra("loss"));
+        edit_gains.setText(getIntent().getStringExtra("gains"));
+
+
+        edit_save.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                if(ed_hivename.getText().toString().isEmpty() || ed_inspection.toString().isEmpty() || ed_health.toString().isEmpty()
-                        || ed_honeystores.toString().isEmpty() || ed_queenprod.toString().isEmpty() || ed_inven_equip.toString().isEmpty()
-                        || ed_hive_equip.toString().isEmpty() || ed_loss.toString().isEmpty() || ed_gain.toString().isEmpty()){
+                if(hivename.getText().toString().isEmpty()|| inspection.getText().toString().isEmpty()|| health.getText().toString().isEmpty()||
+                honeystores.getText().toString().isEmpty()|| queenprod.getText().toString().isEmpty()|| hive_equip.getText().toString().isEmpty()||
+                inven_equip.getText().toString().isEmpty()|| edit_loss.getText().toString().isEmpty()|| edit_gains.getText().toString().isEmpty()) {
                     Toast.makeText(HiveEdit.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Retrieve data from the input fields
-                    String hivename = ed_hivename.getText().toString().trim();
-                    String inspection = ed_inspection.getText().toString().trim();
-                    String health = ed_health.getText().toString().trim();
-                    String honeystores = ed_honeystores.getText().toString().trim();
-                    String queenprod = ed_queenprod.getText().toString().trim();
-                    String inven_equip = ed_inven_equip.getText().toString().trim();
-                    String hive_equip = ed_hive_equip.getText().toString().trim();
-                    String loss = ed_loss.getText().toString().trim();
-                    String gain = ed_gain.getText().toString().trim();
+                }
 
-                    String username = getIntent().getStringExtra("current_username");
-                    // Create a new hiveinfo object
-                    Hives hive = new Hives();
+                else {
+                    try {
+                        ApplicationClass.hives.get(index).setHivename(hivename.getText().toString());
+                        ApplicationClass.hives.get(index).setInspection_results(inspection.getText().toString());
+                        ApplicationClass.hives.get(index).setHealth(Integer.parseInt(health.getText().toString()));
+                        ApplicationClass.hives.get(index).setHoney_stores(Integer.parseInt(honeystores.getText().toString()));
+                        ApplicationClass.hives.get(index).setQueen_production(Integer.parseInt(queenprod.getText().toString()));
+                        ApplicationClass.hives.get(index).setHive_equipment(Integer.parseInt(hive_equip.getText().toString()));
+                        ApplicationClass.hives.get(index).setInventory_equipment(Integer.parseInt(inven_equip.getText().toString()));
+                        ApplicationClass.hives.get(index).setLosses(Integer.parseInt(edit_loss.getText().toString()));
+                        ApplicationClass.hives.get(index).setGains(Integer.parseInt(edit_gains.getText().toString()));
+                    }
+                    catch (Exception e) {
+                        Toast.makeText(HiveEdit.this, INT_ERR_MSG, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                    hive.setUsername(username);
-                    hive.setHivename(hivename);
-                    hive.setInspection_results(inspection);
-
-                    hive.setHealth(health.equals("null")?0:Integer.parseInt(health));
-                    hive.setHoney_stores(honeystores.equals("null")?0:Integer.parseInt(honeystores));
-                    hive.setQueen_production(queenprod.equals("null")?0:Integer.parseInt(queenprod));
-                    hive.setInventory_equipment(inven_equip.equals("null")?0:Integer.parseInt(inven_equip));
-                    hive.setHive_equiptment(hive_equip.equals("null")?0:Integer.parseInt(hive_equip));
-                    hive.setLosses(loss.equals("null")?0:Integer.parseInt(loss));
-                    hive.setGains(gain.equals("null")?0:Integer.parseInt(gain));
-
-                    Backendless.Persistence.save(hive, new AsyncCallback<Hives>() {
-
+                    Backendless.Persistence.save(ApplicationClass.hives.get(index), new AsyncCallback<Hives>() {
                         @Override
                         public void handleResponse(Hives response) {
-                            Toast.makeText(HiveEdit.this, "New Hive saved successfully" , Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(HiveEdit.this, HivesList.class);
+                            startActivity(intent);
                             HiveEdit.this.finish();
                         }
 
@@ -88,8 +96,10 @@ public class HiveEdit extends AppCompatActivity {
                             Toast.makeText(HiveEdit.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+
                 }
             }
         });
+
     }
 }

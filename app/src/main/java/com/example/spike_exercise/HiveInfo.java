@@ -2,7 +2,10 @@ package com.example.spike_exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,6 +13,7 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
 
 import org.w3c.dom.Text;
@@ -29,9 +33,9 @@ public class HiveInfo extends AppCompatActivity {
     TextView info_inven_equipment_data;
     TextView info_losses_data;
     TextView info_gains_data;
-    String userObjectID;
-    String current_user;
-    Map info;
+    String name_of_hive;
+    int index;
+    Button editButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,34 +54,66 @@ public class HiveInfo extends AppCompatActivity {
         info_losses_data = findViewById(R.id.info_losses_data);
         info_gains_data = findViewById(R.id.info_gains_data);
 
-        userObjectID = UserIdStorageFactory.instance().getStorage().get();
-        // receive the username of the logged in user
-        current_user = getIntent().getStringExtra("current_user");
-        info_hive_name.setText(current_user);
+        name_of_hive = getIntent().getStringExtra("hive_name");
+        info_hive_name.setText(name_of_hive);
+        editButton = findViewById(R.id.edit_button);
+
+        index = getIntent().getIntExtra("index", 0);
+
+
+        final DataQueryBuilder query = DataQueryBuilder.create();
+        query.setWhereClause("hivename = '" + name_of_hive + "'");
 
         // get data from user's hive info and set them to the textviews
-        Backendless.Data.of("Hives").find(new AsyncCallback<List<Map>>() {
+        Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
             @Override
             public void handleResponse(List<Map> response) {
-                for(int i = 0; i < response.size(); i++) {
-                    if(response.get(i).get("username").equals(current_user)) {
-                        info = response.get(i);
-                        info_address_data.setText(info.get("address").toString());
-                        hive_res_o_ins_data.setText(info.get("inspection_results").toString());
-                        info_health_data.setText(info.get("health").toString());
-                        info_honey_stores_data.setText(info.get("honey_stores").toString());
-                        info_queen_production_data.setText(info.get("queen_production").toString());
-                        info_hive_equipment_data.setText(info.get("hive_equipment").toString());
-                        info_inven_equipment_data.setText(info.get("inventory_equipment").toString());
-                        info_losses_data.setText(info.get("losses").toString());
-                        info_gains_data.setText(info.get("gains").toString());
-                    }
-                }
+                info_address_data.setText(response.get(0).get("address").toString());
+                hive_res_o_ins_data.setText(response.get(0).get("inspection_results").toString());
+                info_health_data.setText(response.get(0).get("health").toString());
+                info_honey_stores_data.setText(response.get(0).get("honey_stores").toString());
+                info_queen_production_data.setText(response.get(0).get("queen_production").toString());
+                info_hive_equipment_data.setText(response.get(0).get("hive_equipment").toString());
+                info_inven_equipment_data.setText(response.get(0).get("inventory_equipment").toString());
+                info_losses_data.setText(response.get(0).get("losses").toString());
+                info_gains_data.setText(response.get(0).get("gains").toString());
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
                 Toast.makeText(HiveInfo.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent intent = new Intent(HiveInfo.this, HiveEdit.class);
+                intent.putExtra("index", index);
+
+                Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
+                    @Override
+                    public void handleResponse(List<Map> response) {
+                        
+                        intent.putExtra("hivename", response.get(0).get("hivename").toString());
+                        intent.putExtra("address", response.get(0).get("address").toString());
+                        intent.putExtra("inspection_results", response.get(0).get("inspection_results").toString());
+                        intent.putExtra("health", response.get(0).get("health").toString());
+                        intent.putExtra("honey_stores", response.get(0).get("honey_stores").toString());
+                        intent.putExtra("queen_production", response.get(0).get("queen_production").toString());
+                        intent.putExtra("hive_equipment", response.get(0).get("hive_equipment").toString());
+                        intent.putExtra("inventory_equipment", response.get(0).get("inventory_equipment").toString());
+                        intent.putExtra("losses",response.get(0).get("losses").toString());
+                        intent.putExtra("gains", response.get(0).get("gains").toString());
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void handleFault(BackendlessFault fault) {
+                        Toast.makeText(HiveInfo.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

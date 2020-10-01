@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HiveEdit"></activity>
+        <activity android:name=".HiveEdit"
+            android:parentActivityName=".HiveInfo"
+            android:label="Editing"
+            />
+        <activity android:name=".HiveAdd" />
         <activity android:name=".HivesList" />
         <activity android:name=".UserProfileEditActivity" />
         <activity android:name=".UserProfile" />
