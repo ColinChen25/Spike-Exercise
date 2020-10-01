@@ -2,6 +2,7 @@ package com.example.spike_exercise;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -79,6 +80,8 @@ public class HiveAdd extends AppCompatActivity {
                         @Override
                         public void handleResponse(Hives response) {
                             Toast.makeText(HiveAdd.this, "New Hive saved successfully" , Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(HiveAdd.this, HivesList.class);
+                            startActivity(intent);
                             HiveAdd.this.finish();
                         }
 

@@ -103,7 +103,7 @@ public class HiveInfo extends AppCompatActivity {
                         intent.putExtra("queen_production", response.get(0).get("queen_production").toString());
                         intent.putExtra("hive_equipment", response.get(0).get("hive_equipment").toString());
                         intent.putExtra("inventory_equipment", response.get(0).get("inventory_equipment").toString());
-                        intent.putExtra("losses",response.get(0).get("losses").toString());
+                        intent.putExtra("loss",response.get(0).get("losses").toString());
                         intent.putExtra("gains", response.get(0).get("gains").toString());
                         startActivity(intent);
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText regPhone;
     EditText regAddress;
     EditText regPassword;
+    ImageView regProfilePic;
     Button buttonRegister;
 
     @Override
@@ -41,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         regAddress = findViewById(R.id.regAddress);
         regPassword = findViewById(R.id.regPassword);
         buttonRegister = findViewById(R.id.btnRegister);
+        regProfilePic = findViewById(R.id.regProfilePic);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,15 @@ public class RegisterActivity extends AppCompatActivity {
                     });
 
                 }
+            }
+        });
+
+        regProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
             }
         });
     }

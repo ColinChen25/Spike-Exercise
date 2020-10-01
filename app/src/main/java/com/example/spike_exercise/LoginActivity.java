@@ -38,11 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         loginSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (loginUsernameField.getText().toString().isEmpty()|| loginPasswordField.getText().toString().isEmpty()) {
+                if (loginUsernameField.getText().toString().isEmpty() || loginPasswordField.getText().toString().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Please Enter All Fields", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
+                } else {
                     String username = loginUsernameField.getText().toString();
                     String password = loginPasswordField.getText().toString();
 
@@ -60,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
-                            
+
                             Toast.makeText(LoginActivity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -77,34 +75,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Backendless.UserService.isValidLogin(new AsyncCallback<Boolean>() {
-            @Override
-            public void handleResponse(Boolean response) {
-
-                // if a valid login
-                if(response) {
-                    userObjectId = UserIdStorageFactory.instance().getStorage().get(); //gets currently logged in user's
-
-                    Backendless.Data.of(BackendlessUser.class).findById(userObjectId, new AsyncCallback<BackendlessUser>() {
-                        @Override
-                        public void handleResponse(BackendlessUser response) {
-                            startActivity(new Intent(LoginActivity.this, HivesList.class));
-                            LoginActivity.this.finish();
-                        }
-
-                        @Override
-                        public void handleFault(BackendlessFault fault) {
-                            Toast.makeText(LoginActivity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Toast.makeText(LoginActivity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }
