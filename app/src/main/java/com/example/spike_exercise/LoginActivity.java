@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
+                            
                             Toast.makeText(LoginActivity.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
