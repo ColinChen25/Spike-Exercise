@@ -39,6 +39,17 @@
     <string name="btnLoginText">SIGN IN</string>
     <string name="loginToRegText">Don\'t have an account?</string>
     <string name="btnLoginToRegText">Sign Up</string>
+    <string name="profileName">Name(placeholder)</string>
+    <string name="profileAddressLabel">Address</string>
+    <string name="profilePhoneLabel">Phone Number</string>
+    <string name="profileEmailLabel">Email</string>
+    <string name="profileAddress">user address(placeholder)</string>
+    <string name="profilePhoneNum">user phone number(placeholder)</string>
+    <string name="profileEmailAddr">user email(placeholder)</string>
+    <string name="profilePicDescription">profile picture</string>
+    <string name="profileMenuEdit">Edit</string>
+    <string name="profileMenuLogout">Logout</string>
+    <string name="profileMenuBtnDescription">button for menu</string>
 
 
 </resources>
