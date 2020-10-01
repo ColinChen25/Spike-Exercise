@@ -94,7 +94,7 @@ public class HiveInfo extends AppCompatActivity {
                 Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
                     @Override
                     public void handleResponse(List<Map> response) {
-                        
+
                         intent.putExtra("hivename", response.get(0).get("hivename").toString());
                         intent.putExtra("address", response.get(0).get("address").toString());
                         intent.putExtra("inspection_results", response.get(0).get("inspection_results").toString());
