@@ -71,7 +71,6 @@ public class HiveInfo extends AppCompatActivity {
                         info_inven_equipment_data.setText(info.get("inventory_equipment").toString());
                         info_losses_data.setText(info.get("losses").toString());
                         info_gains_data.setText(info.get("gains").toString());
-
                     }
                 }
             }
