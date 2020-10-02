@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     @author Dung V Vo
-    toolbar layout to be used for main screen
+    bottom_navigation layout to be used for main screen
 -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation"
+        app:menu="@menu/bottom_navigation_menu"
         android:background="@color/theme"
         app:itemIconTint="@color/textv3"
         app:itemTextColor="@color/textv3"/>
