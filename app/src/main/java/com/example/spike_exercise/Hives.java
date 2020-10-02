@@ -2,15 +2,15 @@ package com.example.spike_exercise;
 
 public class Hives {
     private String username;
-    private int gains;
-    private int health;
-    private int hive_equipment;
+    private String gains;
+    private String health;
+    private String hive_equipment;
     private String hivename;
-    private int honey_stores;
+    private String honey_stores;
     private String inspection_results;
-    private int inventory_equipment;
-    private int losses;
-    private int queen_production;
+    private String inventory_equipment;
+    private String losses;
+    private String queen_production;
     private String address;
     private String objectId;
 
@@ -30,27 +30,27 @@ public class Hives {
         this.username = username;
     }
 
-    public int getGains() {
+    public String getGains() {
         return gains;
     }
 
-    public void setGains(int gains) {
+    public void setGains(String gains) {
         this.gains = gains;
     }
 
-    public int getHealth() {
+    public String getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(String health) {
         this.health = health;
     }
 
-    public int getHive_equipment() {
+    public String getHive_equipment() {
         return hive_equipment;
     }
 
-    public void setHive_equipment(int hive_equiptment) {
+    public void setHive_equipment(String hive_equiptment) {
         this.hive_equipment = hive_equiptment;
     }
 
@@ -62,11 +62,11 @@ public class Hives {
         this.hivename = hivename;
     }
 
-    public int getHoney_stores() {
+    public String getHoney_stores() {
         return honey_stores;
     }
 
-    public void setHoney_stores(int honey_stores) {
+    public void setHoney_stores(String honey_stores) {
         this.honey_stores = honey_stores;
     }
 
@@ -78,27 +78,27 @@ public class Hives {
         this.inspection_results = inspection_results;
     }
 
-    public int getInventory_equipment() {
+    public String getInventory_equipment() {
         return inventory_equipment;
     }
 
-    public void setInventory_equipment(int inventory_equipment) {
+    public void setInventory_equipment(String inventory_equipment) {
         this.inventory_equipment = inventory_equipment;
     }
 
-    public int getLosses() {
+    public String getLosses() {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(String losses) {
         this.losses = losses;
     }
 
-    public int getQueen_production() {
+    public String getQueen_production() {
         return queen_production;
     }
 
-    public void setQueen_production(int queen_production) {
+    public void setQueen_production(String queen_production) {
         this.queen_production = queen_production;
     }
 

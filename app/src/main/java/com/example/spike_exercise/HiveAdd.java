@@ -67,13 +67,13 @@ public class HiveAdd extends AppCompatActivity {
                     hive.setHivename(hivename);
                     hive.setInspection_results(inspection);
 
-                    hive.setHealth(health.equals("null") ?0:Integer.parseInt(health));
-                    hive.setHoney_stores(honeystores.equals("null")?0:Integer.parseInt(honeystores));
-                    hive.setQueen_production(queenprod.equals("null")?0:Integer.parseInt(queenprod));
-                    hive.setInventory_equipment(inven_equip.equals("null")?0:Integer.parseInt(inven_equip));
-                    hive.setHive_equipment(hive_equip.equals("null")?0:Integer.parseInt(hive_equip));
-                    hive.setLosses(loss.equals("null")?0:Integer.parseInt(loss));
-                    hive.setGains(gain.equals("null")?0:Integer.parseInt(gain));
+                    hive.setHealth(health);
+                    hive.setHoney_stores(honeystores.equals("null")?"":honeystores);
+                    hive.setQueen_production(queenprod.equals("null")?"":queenprod);
+                    hive.setInventory_equipment(inven_equip.equals("null")?"":inven_equip);
+                    hive.setHive_equipment(hive_equip.equals("null")?"":hive_equip);
+                    hive.setLosses(loss.equals("null")?"":loss);
+                    hive.setGains(gain.equals("null")?"":gain);
                     hive.setAddress(ApplicationClass.user.getProperty("address").toString());
 
                     Backendless.Persistence.save(hive, new AsyncCallback<Hives>() {

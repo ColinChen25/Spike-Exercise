@@ -33,6 +33,7 @@ public class HiveEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_activity_hive_edit);
 
+        // initialize fields
         hivename = findViewById(R.id.edit_hivename);
         inspection = findViewById(R.id.edit_inspection);
         health = findViewById(R.id.edit_health);
@@ -57,6 +58,7 @@ public class HiveEdit extends AppCompatActivity {
         edit_gains.setText(getIntent().getStringExtra("gains"));
 
 
+        // save the inputted fields
         edit_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,13 +72,13 @@ public class HiveEdit extends AppCompatActivity {
                     try {
                         ApplicationClass.hives.get(index).setHivename(hivename.getText().toString());
                         ApplicationClass.hives.get(index).setInspection_results(inspection.getText().toString());
-                        ApplicationClass.hives.get(index).setHealth(Integer.parseInt(health.getText().toString()));
-                        ApplicationClass.hives.get(index).setHoney_stores(Integer.parseInt(honeystores.getText().toString()));
-                        ApplicationClass.hives.get(index).setQueen_production(Integer.parseInt(queenprod.getText().toString()));
-                        ApplicationClass.hives.get(index).setHive_equipment(Integer.parseInt(hive_equip.getText().toString()));
-                        ApplicationClass.hives.get(index).setInventory_equipment(Integer.parseInt(inven_equip.getText().toString()));
-                        ApplicationClass.hives.get(index).setLosses(Integer.parseInt(edit_loss.getText().toString()));
-                        ApplicationClass.hives.get(index).setGains(Integer.parseInt(edit_gains.getText().toString()));
+                        ApplicationClass.hives.get(index).setHealth(health.getText().toString());
+                        ApplicationClass.hives.get(index).setHoney_stores(honeystores.getText().toString());
+                        ApplicationClass.hives.get(index).setQueen_production(queenprod.getText().toString());
+                        ApplicationClass.hives.get(index).setHive_equipment(hive_equip.getText().toString());
+                        ApplicationClass.hives.get(index).setInventory_equipment(inven_equip.getText().toString());
+                        ApplicationClass.hives.get(index).setLosses(edit_loss.getText().toString());
+                        ApplicationClass.hives.get(index).setGains(edit_gains.getText().toString());
                     }
                     catch (Exception e) {
                         Toast.makeText(HiveEdit.this, INT_ERR_MSG, Toast.LENGTH_SHORT).show();
