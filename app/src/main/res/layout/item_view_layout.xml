@@ -9,8 +9,8 @@
     android:layout_marginLeft="4dp"
     android:layout_marginTop="4dp"
     android:layout_marginRight="4dp"
-    app:layout_constraintEnd_toEndOf="parent">
-    android:background="@drawable/rectangle_shape_3dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:background="@drawable/rectangle_shape_3dp">
 
     <ImageView
         android:id="@+id/hive_picture"
