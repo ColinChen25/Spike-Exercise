@@ -1,9 +1,11 @@
 package com.example.spike_exercise;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HiveEdit extends AppCompatActivity {
 
@@ -32,6 +35,27 @@ public class HiveEdit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_activity_hive_edit);
+
+        // Bottom navigation bar for interchanging
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navHives:
+                        break;
+                    case R.id.navSearch:
+                        Toast.makeText(HiveEdit.this, "navSearch selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navProfile:
+                        Toast.makeText(HiveEdit.this, "navProfile selected", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(HiveEdit.this, UserProfile.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
 
         // initialize fields
         hivename = findViewById(R.id.edit_hivename);

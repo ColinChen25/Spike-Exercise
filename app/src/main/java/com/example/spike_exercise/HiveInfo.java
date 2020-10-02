@@ -1,5 +1,6 @@
 package com.example.spike_exercise;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 import org.w3c.dom.Text;
@@ -49,6 +52,27 @@ public class HiveInfo extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_activity_hive_info);
+
+        // Bottom navigation bar for interchanging
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navHives:
+                        break;
+                    case R.id.navSearch:
+                        Toast.makeText(HiveInfo.this, "navSearch selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navProfile:
+                        Toast.makeText(HiveInfo.this, "navProfile selected", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(HiveInfo.this, UserProfile.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
 
         info_hive_name = findViewById(R.id.info_hive_name);
         info_address_data = findViewById(R.id.info_address_data);

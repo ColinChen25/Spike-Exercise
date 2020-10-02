@@ -45,7 +45,26 @@ public class UserProfile extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_user_profile);
-
+        // Bottom navigation bar for interchanging
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navHives:
+                        break;
+                    case R.id.navSearch:
+                        Toast.makeText(UserProfile.this, "navSearch selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navProfile:
+                        Toast.makeText(UserProfile.this, "navProfile selected", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(UserProfile.this, UserProfile.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
 
         profileName = findViewById(R.id.profileName);
         profileAddress = findViewById(R.id.profileAddress);
