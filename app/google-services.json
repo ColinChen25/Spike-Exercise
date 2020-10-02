@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "946982930143",
+    "firebase_url": "https://spikeexercise-2fb0e.firebaseio.com",
+    "project_id": "spikeexercise-2fb0e",
+    "storage_bucket": "spikeexercise-2fb0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946982930143:android:3d3107f5ca072ca5b3cb6a",
+        "android_client_info": {
+          "package_name": "com.example.spike_exercise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946982930143-7104er5sachdkm5s4hgedj9dl0oaboof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spike_exercise",
+            "certificate_hash": "1d6f9a231ebd42aa2a5a48a4af797aa3fbb9ca3f"
+          }
+        },
+        {
+          "client_id": "946982930143-jgr1hbdqeo6rmhs6a5fp5tvct47co11l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcH526uQUh87NwitwiMB8KDXzc02h5GlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946982930143-jgr1hbdqeo6rmhs6a5fp5tvct47co11l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
