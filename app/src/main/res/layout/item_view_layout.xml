@@ -94,11 +94,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
-        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info"
-        tools:layout_editor_absoluteY="66dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info">
 
         <ImageView
             android:id="@+id/gender_person_icon_image_view"
@@ -149,11 +150,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
-        app:layout_constraintStart_toEndOf="@+id/gender_linear_layout_item_view"
-        tools:layout_editor_absoluteY="66dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gender_linear_layout_item_view">
 
         <ImageView
             android:id="@+id/queen_icon_image_view"
