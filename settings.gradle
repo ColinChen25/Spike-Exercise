@@ -1,2 +1,9 @@
 include ':app'
+include ':uCrop'
+allprojects {
+    repositories {
+        jcenter()
+        maven {url "https://jitpack.io"}
+    }
+}
 rootProject.name = "Spike-Exercise"

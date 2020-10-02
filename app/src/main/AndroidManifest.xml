@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.spike_exercise">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ApplicationClass"
@@ -12,7 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< Updated upstream
         <activity android:name=".HivesList"></activity>
+=======
+        <activity
+            android:name=".HiveEdit"
+            android:label="Editing"
+            android:parentActivityName=".HiveInfo" />
+        <activity android:name=".HiveAdd" />
+        <activity android:name=".HivesList" />
+        <activity android:name=".UserProfileEditActivity" />
+        <activity android:name=".UserProfile" />
+>>>>>>> Stashed changes
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HiveInfo" />
         <activity android:name=".LoginActivity">
@@ -23,6 +38,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <!-- uCrop cropping activity -->
+        <activity
+
+            android:name=".UCropActivity"
+            android:screenOrientation="portrait"
+
+            android:theme= "@style/AppTheme.NoActionBar" /> <!-- cache directory file provider paths -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

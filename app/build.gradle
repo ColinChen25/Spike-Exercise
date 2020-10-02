@@ -28,11 +28,30 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation group: 'com.backendless', name: 'backendless', version: '6.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'// backendless
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 //    for outlined text box
-    implementation 'com.google.android.material:material:1.3.0-alpha02'
+    implementation 'com.google.android.material:material:1.3.0-alpha03'
 
+    //Butterknife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //dexter permissions
+    implementation 'com.karumi:dexter:6.2.1'
+
+    // circular imageview
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.bumptech.glide:annotations:4.11.0'
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.11.0') {
+        exclude group: 'glide-parent'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'com.github.yalantis:ucrop:2.2.6'
 
 }
