@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/TextInputLayoutStyle"
+    android:id="@+id/ed_hive_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/TextInputLayoutStyle">
 
 
     <androidx.core.widget.NestedScrollView
@@ -46,9 +47,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_info">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_hivename"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text"/>
+                    android:textColor="@color/text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,6 +69,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_inspection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -74,24 +77,24 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edit_health"
+                android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="368dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginTop="20dp"
-                android:hint="@string/health"
+                android:hint="Health"
                 android:textColorHint="@color/text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.372"
+                app:layout_constraintHorizontal_bias="0.488"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_res_o_ins">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_health"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -106,9 +109,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.162"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_health">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_honeystores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -130,6 +134,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_honey_stores">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/queenprod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -151,6 +156,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_queen_production">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hive_equip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -172,6 +178,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_hive_equipment">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inven_equip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -193,6 +200,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_inven_equipment">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_loss"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
@@ -214,6 +222,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_losses">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text" />
