@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_view_constraint_layout"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="4dp"
     android:layout_marginTop="4dp"
     android:layout_marginRight="4dp"
@@ -94,20 +94,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info">
+        app:layout_constraintStart_toStartOf="@id/vertical_barrier_picture_info"
+        app:layout_constraintTop_toBottomOf="@+id/address_linear_layout_item_view">
 
         <ImageView
             android:id="@+id/gender_person_icon_image_view"
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_marginTop="3dp"
-            android:scaleType="fitXY" />
-        <!--android:src="@drawable/ic_heart_04"-->
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_heart_04" />
 
         <TextView
             android:id="@+id/gender_linear_layout_text_view"
@@ -150,12 +152,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/gender_linear_layout_item_view">
+        app:layout_constraintStart_toEndOf="@+id/gender_linear_layout_item_view"
+        app:layout_constraintTop_toBottomOf="@+id/address_linear_layout_item_view">
 
         <ImageView
             android:id="@+id/queen_icon_image_view"
@@ -163,8 +167,8 @@
             android:layout_height="17dp"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:scaleType="fitXY" />
-        <!--android:src="@drawable/ic_ribbon_01"-->
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_ribbon_01" />
 
         <TextView
             android:id="@+id/queen_production_linear_layout_text_view"
