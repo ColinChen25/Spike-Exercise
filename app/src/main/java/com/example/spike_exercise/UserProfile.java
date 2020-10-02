@@ -52,7 +52,7 @@ public class UserProfile extends AppCompatActivity {
         profileEmail = findViewById(R.id.profileEmail);
         profilePic = findViewById(R.id.profilePicture);
         profilePhone = findViewById(R.id.profilePhone);
-        if(ApplicationClass.user.getProperty("profile_pic") == null) {
+        if(ApplicationClass.user.getProperty("profile_pic") != null) {
             filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
             storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
             try {
