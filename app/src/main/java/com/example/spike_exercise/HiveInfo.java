@@ -60,12 +60,13 @@ public class HiveInfo extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navHives:
+                        Intent hiveListIntent = new Intent(HiveInfo.this, HivesList.class);
+                        startActivity(hiveListIntent);
                         break;
                     case R.id.navSearch:
-                        Toast.makeText(HiveInfo.this, "navSearch selected", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.navProfile:
-                        Toast.makeText(HiveInfo.this, "navProfile selected", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(HiveInfo.this, UserProfile.class);
                         startActivity(intent);
                         break;

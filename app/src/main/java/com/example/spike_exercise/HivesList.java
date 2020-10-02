@@ -41,7 +41,6 @@ public class HivesList extends AppCompatActivity {
                     case R.id.navHives:
                         break;
                     case R.id.navSearch:
-                        Toast.makeText(HivesList.this, "navSearch selected", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.navProfile:
                         Toast.makeText(HivesList.this, "navProfile selected", Toast.LENGTH_SHORT).show();

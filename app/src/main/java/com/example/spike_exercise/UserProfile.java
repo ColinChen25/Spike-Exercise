@@ -52,14 +52,13 @@ public class UserProfile extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navHives:
+                        Intent intent = new Intent(UserProfile.this, HivesList.class);
+                        startActivity(intent);
                         break;
                     case R.id.navSearch:
-                        Toast.makeText(UserProfile.this, "navSearch selected", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.navProfile:
-                        Toast.makeText(UserProfile.this, "navProfile selected", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(UserProfile.this, UserProfile.class);
-                        startActivity(intent);
                         break;
                 }
                 return true;
