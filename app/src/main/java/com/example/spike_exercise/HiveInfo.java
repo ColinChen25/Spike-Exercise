@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +25,18 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +56,9 @@ public class HiveInfo extends AppCompatActivity {
     int index;
     Button editButton;
     Button deleteButton;
+    private String filePath;
+    ImageView info_profile_pic;
+    StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -87,6 +98,7 @@ public class HiveInfo extends AppCompatActivity {
         info_inven_equipment_data = findViewById(R.id.info_inven_equipment_data);
         info_losses_data = findViewById(R.id.info_losses_data);
         info_gains_data = findViewById(R.id.info_gains_data);
+        info_profile_pic = findViewById(R.id.info_profile_pic);
 
         name_of_hive = getIntent().getStringExtra("hive_name");
         info_hive_name.setText(name_of_hive);
@@ -112,6 +124,28 @@ public class HiveInfo extends AppCompatActivity {
                 info_inven_equipment_data.setText(response.get(0).get("inventory_equipment").toString());
                 info_losses_data.setText(response.get(0).get("losses").toString());
                 info_gains_data.setText(response.get(0).get("gains").toString());
+
+                if(ApplicationClass.user.getProperty("profile_pic") != null) {
+                    filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
+                    storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
+                    try {
+                        final File localFile = File.createTempFile(ApplicationClass.user.getProperty("profile_pic").toString(), "jpeg");
+                        storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                Bitmap bitImg = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                                info_profile_pic.setImageBitmap(bitImg);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(HiveInfo.this, "Error: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }catch(IOException e) {
+                        Toast.makeText(HiveInfo.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
 
             @Override
