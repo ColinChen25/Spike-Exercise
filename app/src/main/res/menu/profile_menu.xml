@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/profileEdit"
-        android:title="@string/profileMenuEdit" />
+        android:title="@string/profileMenuEdit"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/profileLogout"
-        android:title="@string/profileMenuLogout" />
+        android:title="@string/profileMenuLogout"
+        app:showAsAction="never"/>
 </menu>

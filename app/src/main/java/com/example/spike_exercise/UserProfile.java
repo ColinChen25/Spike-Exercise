@@ -1,6 +1,7 @@
 package com.example.spike_exercise;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -8,11 +9,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 
 import com.backendless.Backendless;
@@ -31,7 +36,7 @@ import java.io.IOException;
 
 
 public class UserProfile extends AppCompatActivity {
-
+    Toolbar toolbar;
     TextView profileName;
     TextView profileAddress;
     TextView profileEmail;
@@ -39,12 +44,19 @@ public class UserProfile extends AppCompatActivity {
     ImageView profilePic;
     private String filePath;
     private StorageReference storageReference;
+    // Requirement to initialize call for toolbar set up
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
         setContentView(R.layout.activity_user_profile);
+        // Toolbar initialize
+//        this.toolbar = findViewById(R.id.toolbar);
+//        TextView toolbarTitle = findViewById(R.id.toolbarTitleText);
+//        toolbar.setTitle("User's Profile");
+
         // Bottom navigation bar for interchanging
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -98,5 +110,30 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText(ApplicationClass.user.getProperty("email").toString());
         profilePhone.setText(ApplicationClass.user.getProperty("phone_number").toString());
 
+    }
+
+    // Menu for topbar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.profile_menu, menu);
+        return true;
+    }
+
+    // Function for clicking on item
+    // TODO: Add functions and calls for the proper screen
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.profileEdit:
+                Toast.makeText(this, "profileEdit selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.profileLogout:
+                Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

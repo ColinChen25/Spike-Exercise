@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -192,6 +194,31 @@ public class HiveInfo extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Menu for topbar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_info_menu, menu);
+        return true;
+    }
+
+    // Function for clicking on item
+    // TODO: Add functions and calls for the proper screen
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.infoEdit:
+                Toast.makeText(this, "profileEdit selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.infoRemove:
+                Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

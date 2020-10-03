@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/infoEdit"
-        android:title="Edit" />
+        android:title="Edit"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/infoRemove"
-        android:title="Remove" />
+        android:title="Remove"
+        app:showAsAction="never"/>
 </menu>

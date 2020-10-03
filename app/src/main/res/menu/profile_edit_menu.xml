@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/profileSave"
-        android:title="Save" />
+        android:title="Save"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/profileLogout"
-        android:title="@string/profileMenuLogout" />
+        android:title="@string/profileMenuLogout"
+        app:showAsAction="never"/>
 </menu>

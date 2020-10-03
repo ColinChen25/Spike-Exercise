@@ -50,6 +50,8 @@
     <string name="profileMenuEdit">Edit</string>
     <string name="profileMenuLogout">Logout</string>
     <string name="profileMenuBtnDescription">button for menu</string>
+    <string name="userProfile">User\'s Profile</string>
+
 
 
 </resources>

@@ -10,6 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -134,6 +137,31 @@ public class UserProfileEditActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // Menu for topbar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.profile_edit_menu, menu);
+        return true;
+    }
+
+    // Function for clicking on item
+    // TODO: Add functions and calls for the proper screen
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.profileSave:
+                Toast.makeText(this, "profileSave selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.profileLogout:
+                Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // method that choose an image from the device's image storage
