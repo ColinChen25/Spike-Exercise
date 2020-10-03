@@ -13,6 +13,16 @@ public class Hives {
     private String queen_production;
     private String address;
     private String objectId;
+    private String imageKey;
+
+    public String getImageKey() {
+        return imageKey;
+    }
+
+    public void setImageKey(String imageKey) {
+        this.imageKey = imageKey;
+    }
+
 
     public String getAddress() {
         return address;

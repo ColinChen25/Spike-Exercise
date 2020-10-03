@@ -5,15 +5,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,14 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.backendless.persistence.local.UserIdStorageFactory;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 
 import org.w3c.dom.Text;
@@ -31,6 +41,7 @@ import org.w3c.dom.Text;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class HiveInfo extends AppCompatActivity {
 
@@ -48,6 +59,15 @@ public class HiveInfo extends AppCompatActivity {
     int index;
     Button editButton;
     Button deleteButton;
+
+    // Hive Image
+    ImageView hiveImage;
+    private Uri imageUri;
+    FirebaseStorage storage;
+    private StorageReference storage_reference;
+    String imageKey = "";
+    final int HIVE_IMAGE_REQUEST_CODE = 15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -194,8 +214,76 @@ public class HiveInfo extends AppCompatActivity {
 
             }
         });
+        hiveImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+                if(imageUri != null) {
+                    uploadImageFile();
+                    ApplicationClass.hives.get(index).setImageKey(imageKey);
+                }
+                Backendless.Persistence.save(ApplicationClass.hives.get(index), new AsyncCallback<Hives>() {
+                    @Override
+                    public void handleResponse(Hives response) {
+                        Intent intent = new Intent(HiveInfo.this, HivesList.class);
+                        startActivity(intent);
+                        HiveInfo.this.finish();
+                    }
+
+                    @Override
+                    public void handleFault(BackendlessFault fault) {
+                        Toast.makeText(HiveInfo.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent. ACTION_GET_CONTENT);
+        startActivityForResult(intent, HIVE_IMAGE_REQUEST_CODE);
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == HIVE_IMAGE_REQUEST_CODE && resultCode == RESULT_OK && (data != null) && (data.getData() != null)) {
+            imageUri = data.getData();
+            hiveImage.setImageURI(imageUri);
+        }
+    }
+
+    private void uploadImageFile() {
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading your hive image...");
+        pd.show();
+        imageKey = UUID.randomUUID().toString();
+        StorageReference riversRef = storage_reference.child("images/" + imageKey);
+
+        riversRef.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        pd.dismiss();
+                        Snackbar.make(findViewById(android.R.id.content), "Upload Successful", Snackbar.LENGTH_LONG ).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        pd.dismiss();
+                        Toast.makeText(HiveInfo.this, "Error:" + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                pd.setMessage((int)progressPercent + "%");
+            }
+        });
+    }
     // Menu for topbar
 
     @Override
