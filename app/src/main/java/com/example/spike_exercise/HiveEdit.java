@@ -88,14 +88,17 @@ public class HiveEdit extends AppCompatActivity {
         edit_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // check if the fields are empty
                 if(hivename.getText().toString().isEmpty()|| inspection.getText().toString().isEmpty()|| health.getText().toString().isEmpty()||
                 honeystores.getText().toString().isEmpty()|| queenprod.getText().toString().isEmpty()|| hive_equip.getText().toString().isEmpty()||
                 inven_equip.getText().toString().isEmpty()|| edit_loss.getText().toString().isEmpty()|| edit_gains.getText().toString().isEmpty()) {
                     Toast.makeText(HiveEdit.this, "Please Enter All Required Fields", Toast.LENGTH_SHORT).show();
                 }
 
+                // originally wanted certain variables to be ints, but discussed with group so changed to Strings instead
                 else {
                     try {
+                        // set the variables of the current hive being modified
                         ApplicationClass.hives.get(index).setHivename(hivename.getText().toString());
                         ApplicationClass.hives.get(index).setInspection_results(inspection.getText().toString());
                         ApplicationClass.hives.get(index).setHealth(health.getText().toString());
@@ -111,9 +114,11 @@ public class HiveEdit extends AppCompatActivity {
                         return;
                     }
 
+                    // find the hive that is being modified and save the new variables
                     Backendless.Persistence.save(ApplicationClass.hives.get(index), new AsyncCallback<Hives>() {
                         @Override
                         public void handleResponse(Hives response) {
+                            // after saving, return back to the hive list.
                             Intent intent = new Intent(HiveEdit.this, HivesList.class);
                             startActivity(intent);
                             HiveEdit.this.finish();

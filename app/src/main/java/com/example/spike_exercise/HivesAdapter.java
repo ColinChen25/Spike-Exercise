@@ -29,8 +29,6 @@ import java.util.List;
 public class HivesAdapter extends RecyclerView.Adapter<HivesAdapter.MyViewHolder> {
     private Context context;
     private List<Hives> list;
-    private String filePath;
-    private StorageReference storageReference;
     public HivesAdapter(Context context, List<Hives> list) {
         this.context = context;
         this.list = list;
@@ -51,27 +49,6 @@ public class HivesAdapter extends RecyclerView.Adapter<HivesAdapter.MyViewHolder
         holder.address_linear_layout_info.setText(list.get(position).getAddress());
         holder.hive_Health.setText("" + list.get(position).getHealth());
         holder.queen_production_linear_layout_info.setText(list.get(position).getQueen_production() + "");
-        if(ApplicationClass.user.getProperty("profile_pic") != null) {
-            filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
-            storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
-            try {
-                final File localFile = File.createTempFile(ApplicationClass.user.getProperty("profile_pic").toString(), "jpeg");
-                storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        Bitmap bitImg = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                        holder.hive_picture.setImageBitmap(bitImg);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }catch(IOException e) {
-                Toast.makeText(context, "Error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
 
         holder.item_view_constraint_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +73,7 @@ public class HivesAdapter extends RecyclerView.Adapter<HivesAdapter.MyViewHolder
         TextView hive_Health;
         TextView queen_production_linear_layout_info;
         ConstraintLayout item_view_constraint_layout;
-        ImageView hive_picture;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -105,7 +82,6 @@ public class HivesAdapter extends RecyclerView.Adapter<HivesAdapter.MyViewHolder
             hive_Health = itemView.findViewById(R.id.hive_Health);
             queen_production_linear_layout_info = itemView.findViewById(R.id.queen_production_linear_layout_info);
             item_view_constraint_layout = itemView.findViewById(R.id.item_view_constraint_layout);
-            hive_picture = itemView.findViewById(R.id.hive_picture);
         }
     }
 }

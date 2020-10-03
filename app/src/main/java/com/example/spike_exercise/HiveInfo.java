@@ -60,6 +60,7 @@ public class HiveInfo extends AppCompatActivity {
     private String filePath;
     ImageView info_profile_pic;
     StorageReference storageReference;
+    DataQueryBuilder query = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -90,7 +91,7 @@ public class HiveInfo extends AppCompatActivity {
                 return true;
             }
         });
-
+        // initialization
         info_hive_name = findViewById(R.id.info_hive_name);
         info_address_data = findViewById(R.id.info_address_data);
         hive_res_o_ins_data = findViewById(R.id.hive_res_o_ins_data);
@@ -112,13 +113,15 @@ public class HiveInfo extends AppCompatActivity {
         index = getIntent().getIntExtra("index", 0);
 
 
-        final DataQueryBuilder query = DataQueryBuilder.create();
+        // build the query to find the hive being inspected
+        query = DataQueryBuilder.create();
         query.setWhereClause("hivename = '" + name_of_hive + "'");
 
         // get data from user's hive info and set them to the textviews
         Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
             @Override
             public void handleResponse(List<Map> response) {
+                // display the variables of the current hive being inspected
                 info_address_data.setText(response.get(0).get("address").toString());
                 hive_res_o_ins_data.setText(response.get(0).get("inspection_results").toString());
                 info_health_data.setText(response.get(0).get("health").toString());
@@ -129,6 +132,7 @@ public class HiveInfo extends AppCompatActivity {
                 info_losses_data.setText(response.get(0).get("losses").toString());
                 info_gains_data.setText(response.get(0).get("gains").toString());
 
+                // if the user have profile pic, set it up
                 if(ApplicationClass.user.getProperty("profile_pic") != null) {
                     filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
                     storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
@@ -161,6 +165,7 @@ public class HiveInfo extends AppCompatActivity {
             }
         });
 
+        // go to the edit page
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +175,7 @@ public class HiveInfo extends AppCompatActivity {
                 Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
                     @Override
                     public void handleResponse(List<Map> response) {
-
+                        // bring the current hive's data to edit page
                         intent.putExtra("hivename", response.get(0).get("hivename").toString());
                         intent.putExtra("address", response.get(0).get("address").toString());
                         intent.putExtra("inspection_results", response.get(0).get("inspection_results").toString());
@@ -227,7 +232,7 @@ public class HiveInfo extends AppCompatActivity {
 
                     }
                 });
-
+                // asks user to confirm if they want to delete the hive
                 dialog.show();
 
             }
@@ -256,10 +261,70 @@ public class HiveInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.infoEdit:
-                Toast.makeText(this, "profileEdit selected", Toast.LENGTH_SHORT).show();
+                final Intent intent = new Intent(HiveInfo.this, HiveEdit.class);
+                intent.putExtra("index", index);
+
+                if (query == null) {
+                    Toast.makeText(this, "Error: Query Error", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                Backendless.Data.of("Hives").find(query, new AsyncCallback<List<Map>>() {
+                    @Override
+                    public void handleResponse(List<Map> response) {
+
+                        intent.putExtra("hivename", response.get(0).get("hivename").toString());
+                        intent.putExtra("address", response.get(0).get("address").toString());
+                        intent.putExtra("inspection_results", response.get(0).get("inspection_results").toString());
+                        intent.putExtra("health", response.get(0).get("health").toString());
+                        intent.putExtra("honey_stores", response.get(0).get("honey_stores").toString());
+                        intent.putExtra("queen_production", response.get(0).get("queen_production").toString());
+                        intent.putExtra("hive_equipment", response.get(0).get("hive_equipment").toString());
+                        intent.putExtra("inventory_equipment", response.get(0).get("inventory_equipment").toString());
+                        intent.putExtra("loss",response.get(0).get("losses").toString());
+                        intent.putExtra("gains", response.get(0).get("gains").toString());
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void handleFault(BackendlessFault fault) {
+                        Toast.makeText(HiveInfo.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return true;
             case R.id.infoRemove:
-                Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(HiveInfo.this);
+                dialog.setMessage("Are you sure you want to delete this hive?");
+                dialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Backendless.Persistence.of(Hives.class).remove(ApplicationClass.hives.get(index), new AsyncCallback<Long>() {
+                            @Override
+                            public void handleResponse(Long response) {
+                                ApplicationClass.hives.remove(index);
+                                Toast.makeText(HiveInfo.this, "Hive Has Been Removed", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(HiveInfo.this, HivesList.class);
+                                startActivity(intent);
+                                HiveInfo.this.finish();
+
+
+                            }
+
+                            @Override
+                            public void handleFault(BackendlessFault fault) {
+                                Toast.makeText(HiveInfo.this, "Error: " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                dialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

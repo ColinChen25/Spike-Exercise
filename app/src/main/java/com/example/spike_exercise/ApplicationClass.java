@@ -12,7 +12,9 @@ public class ApplicationClass extends Application {
     public static final String API_KEY = "6E71C444-5C22-41E4-933C-3380AA3E64A2";
     public static final String SERVER_URL = "https://api.backendless.com";
 
+    // stores the current logged in user
     public static BackendlessUser user;
+    // stores the hives that belongs to the current logged in user
     public static List<Hives> hives;
     @Override
     public void onCreate() {

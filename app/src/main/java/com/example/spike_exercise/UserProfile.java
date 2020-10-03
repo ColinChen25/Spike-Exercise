@@ -70,9 +70,6 @@ public class UserProfile extends AppCompatActivity {
                         startActivity(intent);
                         UserProfile.this.finish();
                         break;
-//                    case R.id.navSearch:
-//
-//                        break;
                     case R.id.navProfile:
                         break;
                 }

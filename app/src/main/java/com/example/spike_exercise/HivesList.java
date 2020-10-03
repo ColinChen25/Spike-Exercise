@@ -33,6 +33,7 @@ public class HivesList extends AppCompatActivity {
         current_username = getIntent().getStringExtra("current_username");
         addButton = findViewById(R.id.add_hive);
 
+        // bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nagivation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -40,10 +41,9 @@ public class HivesList extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navHives:
                         break;
-//                    case R.id.navSearch:
-//                        break;
+
                     case R.id.navProfile:
-//                        Toast.makeText(HivesList.this, "navProfile selected", Toast.LENGTH_SHORT).show();
+                        // go to the hive list page
                         Intent intent = new Intent(HivesList.this, UserProfile.class);
                         startActivity(intent);
                         HivesList.this.finish();
@@ -53,16 +53,17 @@ public class HivesList extends AppCompatActivity {
             }
         });
 
+        // sets up the where clause for sql query
         String whereClause = "username = '" + ApplicationClass.user.getProperty("username") + "'";
 
+        // uses sql query to find the user's hives
         DataQueryBuilder query = DataQueryBuilder.create();
         query.setWhereClause(whereClause);
         query.setGroupBy("created");
 
         recyclerView = findViewById(R.id.hive_list_recycler_view);
 
-
-
+        // Backendless finds the list of hives that belongs to the user
         Backendless.Persistence.of(Hives.class).find(query, new AsyncCallback<List<Hives>>() {
             @Override
             public void handleResponse(List<Hives> response) {
@@ -76,9 +77,10 @@ public class HivesList extends AppCompatActivity {
 
             @Override
             public void handleFault(BackendlessFault fault) {
-
+                Toast.makeText(HivesList.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        // head to adding hives page
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent (HivesList.this, HiveAdd.class);

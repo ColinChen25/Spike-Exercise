@@ -67,8 +67,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         setContentView(R.layout.activity_register);
+
+        // initialization
         regUsername = findViewById(R.id.regUsername);
         regEmail = findViewById(R.id.regEmail);
         regPhone = findViewById(R.id.regPhone);
@@ -77,15 +78,15 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.btnRegister);
         regProfilePic = findViewById(R.id.regProfilePic);
         btnRegToLogin = findViewById(R.id.btnRegToLogin);
-
         storage = FirebaseStorage.getInstance();
         storage_reference = storage.getReference();
 
+        // setting up the register button
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // if there are any empty fields
+                // check if there are any empty fields (not allowed)
                 if (regUsername.getText().toString().isEmpty() || regEmail.getText().toString().isEmpty() ||
                        regPhone.getText().toString().isEmpty() || regPassword.getText().toString().isEmpty()|| regAddress.getText().toString().isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Error: Empty Fields", Toast.LENGTH_SHORT).show();
@@ -97,19 +98,20 @@ public class RegisterActivity extends AppCompatActivity {
                     String address = regAddress.getText().toString();
                     String phone = regPhone.getText().toString();
 
-                    // creating hive object
-
+                    // creating new user and setting up user's information
                     BackendlessUser newAccount = new BackendlessUser();
                     newAccount.setProperty("username", username);
                     newAccount.setPassword(password);
                     newAccount.setProperty("email", email);
                     newAccount.setProperty("address", address);
                     newAccount.setProperty("phone_number", phone);
-                    // if an image has been selected
+                    // if an image has been selected, set up the image and save it to Firebase cloud storage
+                    // save reference in Backendless
                     if(imageUri != null) {
                         uploadImageFile();
                         newAccount.setProperty("profile_pic", imageKey);
                     }
+                    // register the new user in Backendless
                     Backendless.UserService.register(newAccount, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
@@ -129,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // method to invoke either the camera or photo storage to set a profile picture
+        // method to invoke photo storage to set a profile picture
         regProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +149,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    // set an implicit intent to device's photo storage
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -164,6 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    // method that upload the image file to Firebase cloud storage
     private void uploadImageFile() {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Registering...");

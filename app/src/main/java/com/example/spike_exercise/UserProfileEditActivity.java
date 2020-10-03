@@ -47,9 +47,10 @@ public class UserProfileEditActivity extends AppCompatActivity {
     EditText profileEditEmail;
     Button editUserSave;
     private String filePath;
+    FirebaseStorage storage;
     private StorageReference storageReference;
     private Uri imageUri = null;
-    private String imageKey;
+    private String imageKey = null;
 
 
     @Override
@@ -64,9 +65,11 @@ public class UserProfileEditActivity extends AppCompatActivity {
         profileEditEmail = findViewById(R.id.profileEditEmail);
         editUserSave = findViewById(R.id.editUserSave);
 
+        storage = FirebaseStorage.getInstance();
+
 
         if(ApplicationClass.user.getProperty("profile_pic") != null) {
-            String filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
+            filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
             storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
             try {
                 final File localFile = File.createTempFile(ApplicationClass.user.getProperty("profile_pic").toString(), "jpeg");
@@ -109,10 +112,10 @@ public class UserProfileEditActivity extends AppCompatActivity {
                     return;
                 }
                 else {
-                    ApplicationClass.user.setProperty("email", profileEditEmail.getText().toString());
+                    ApplicationClass.user.setProperty("email", profileEditEmail.getText().toString().trim());
                     ApplicationClass.user.setProperty("phone_number", profileEditPhone.getText().toString());
                     ApplicationClass.user.setProperty("username", profileEditName.getText().toString());
-                    ApplicationClass.user.setProperty("address", profileEditAddress.getText().toString());
+                    ApplicationClass.user.setProperty("address", profileEditAddress.getText().toString().trim());
 
                     if(imageUri != null) {
                         uploadImageFile();
@@ -124,6 +127,7 @@ public class UserProfileEditActivity extends AppCompatActivity {
                         public void handleResponse(BackendlessUser response) {
                             Toast.makeText(UserProfileEditActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(UserProfileEditActivity.this, UserProfile.class);
+                            startActivity(intent);
                         }
 
                         @Override
@@ -132,9 +136,7 @@ public class UserProfileEditActivity extends AppCompatActivity {
                             return;
                         }
                     });
-                    Intent intent = new Intent(UserProfileEditActivity.this, UserProfile.class);
-                    startActivity(intent);
-                    UserProfileEditActivity.this.finish();
+
 
                 }
             }
@@ -157,58 +159,10 @@ public class UserProfileEditActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.profileSave:
-                if(profileEditAddress.getText().toString().isEmpty()|| profileEditEmail.getText().toString().isEmpty()||
-                        profileEditName.getText().toString().isEmpty()|| profileEditPhone.getText().toString().isEmpty()) {
-                    Toast.makeText(UserProfileEditActivity.this, "Error: Empty Fields", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    ApplicationClass.user.setProperty("email", profileEditEmail.getText().toString());
-                    ApplicationClass.user.setProperty("phone_number", profileEditPhone.getText().toString());
-                    ApplicationClass.user.setProperty("username", profileEditName.getText().toString());
-                    ApplicationClass.user.setProperty("address", profileEditAddress.getText().toString());
-
-                    if(imageUri != null) {
-                        uploadImageFile();
-                        ApplicationClass.user.setProperty("profile_pic", imageKey);
-                    }
-
-                    Backendless.UserService.update(ApplicationClass.user, new AsyncCallback<BackendlessUser>() {
-                        @Override
-                        public void handleResponse(BackendlessUser response) {
-                            Toast.makeText(UserProfileEditActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(UserProfileEditActivity.this, UserProfile.class);
-                            startActivity(intent);
-                            UserProfileEditActivity.this.finish();
-                        }
-
-                        @Override
-                        public void handleFault(BackendlessFault fault) {
-                            Toast.makeText(UserProfileEditActivity.this, "Error: " + fault.getMessage() , Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    });
-
-
-                }
+                Toast.makeText(this, "profileSave selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.profileLogout:
                 Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
-                Backendless.UserService.logout( new AsyncCallback<Void>()
-                {
-                    public void handleResponse( Void response )
-                    {
-                        // user has been logged out.
-                        Intent intent = new Intent(UserProfileEditActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        UserProfileEditActivity.this.finish();
-                    }
-
-                    public void handleFault( BackendlessFault fault )
-                    {
-                        // something went wrong and logout failed, to get the error code call fault.getCode()
-                        Toast.makeText(UserProfileEditActivity.this, "Error: " + fault.getMessage() , Toast.LENGTH_SHORT).show();
-                    }
-                });
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -235,6 +189,9 @@ public class UserProfileEditActivity extends AppCompatActivity {
 
     private void uploadImageFile() {
         imageKey = UUID.randomUUID().toString();
+        if(storageReference == null) {
+            storageReference = storage.getReference();
+        }
         StorageReference riversRef = storageReference.child("images/" + imageKey);
 
         riversRef.putFile(imageUri)
