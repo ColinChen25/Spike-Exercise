@@ -13,10 +13,6 @@
         android:icon="@drawable/ic_bee_hive_icon_0"
         android:title="Hives" />
     <item
-        android:id="@+id/navSearch"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Search" />
-    <item
         android:id="@+id/navProfile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile" />
