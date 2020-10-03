@@ -76,13 +76,15 @@ public class HiveInfo extends AppCompatActivity {
                     case R.id.navHives:
                         Intent hiveListIntent = new Intent(HiveInfo.this, HivesList.class);
                         startActivity(hiveListIntent);
+                        HiveInfo.this.finish();
                         break;
-                    case R.id.navSearch:
-
-                        break;
+//                    case R.id.navSearch:
+//
+//                        break;
                     case R.id.navProfile:
                         Intent intent = new Intent(HiveInfo.this, UserProfile.class);
                         startActivity(intent);
+                        HiveInfo.this.finish();
                         break;
                 }
                 return true;

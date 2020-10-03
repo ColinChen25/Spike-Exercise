@@ -40,12 +40,13 @@ public class HivesList extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navHives:
                         break;
-                    case R.id.navSearch:
-                        break;
+//                    case R.id.navSearch:
+//                        break;
                     case R.id.navProfile:
-                        Toast.makeText(HivesList.this, "navProfile selected", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(HivesList.this, "navProfile selected", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(HivesList.this, UserProfile.class);
                         startActivity(intent);
+                        HivesList.this.finish();
                         break;
                 }
                 return true;

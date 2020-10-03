@@ -65,7 +65,7 @@ public class UserProfileEditActivity extends AppCompatActivity {
         editUserSave = findViewById(R.id.editUserSave);
 
 
-        if(ApplicationClass.user.getProperty("profile_pic") == null) {
+        if(ApplicationClass.user.getProperty("profile_pic") != null) {
             String filePath = "images/" + ApplicationClass.user.getProperty("profile_pic").toString();
             storageReference = FirebaseStorage.getInstance().getReference().child(filePath);
             try {
@@ -109,7 +109,7 @@ public class UserProfileEditActivity extends AppCompatActivity {
                     return;
                 }
                 else {
-                    ApplicationClass.user.setProperty("email", profileEditAddress.getText().toString());
+                    ApplicationClass.user.setProperty("email", profileEditEmail.getText().toString());
                     ApplicationClass.user.setProperty("phone_number", profileEditPhone.getText().toString());
                     ApplicationClass.user.setProperty("username", profileEditName.getText().toString());
                     ApplicationClass.user.setProperty("address", profileEditAddress.getText().toString());
@@ -132,7 +132,9 @@ public class UserProfileEditActivity extends AppCompatActivity {
                             return;
                         }
                     });
-
+                    Intent intent = new Intent(UserProfileEditActivity.this, UserProfile.class);
+                    startActivity(intent);
+                    UserProfileEditActivity.this.finish();
 
                 }
             }
@@ -155,10 +157,58 @@ public class UserProfileEditActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.profileSave:
-                Toast.makeText(this, "profileSave selected", Toast.LENGTH_SHORT).show();
+                if(profileEditAddress.getText().toString().isEmpty()|| profileEditEmail.getText().toString().isEmpty()||
+                        profileEditName.getText().toString().isEmpty()|| profileEditPhone.getText().toString().isEmpty()) {
+                    Toast.makeText(UserProfileEditActivity.this, "Error: Empty Fields", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ApplicationClass.user.setProperty("email", profileEditEmail.getText().toString());
+                    ApplicationClass.user.setProperty("phone_number", profileEditPhone.getText().toString());
+                    ApplicationClass.user.setProperty("username", profileEditName.getText().toString());
+                    ApplicationClass.user.setProperty("address", profileEditAddress.getText().toString());
+
+                    if(imageUri != null) {
+                        uploadImageFile();
+                        ApplicationClass.user.setProperty("profile_pic", imageKey);
+                    }
+
+                    Backendless.UserService.update(ApplicationClass.user, new AsyncCallback<BackendlessUser>() {
+                        @Override
+                        public void handleResponse(BackendlessUser response) {
+                            Toast.makeText(UserProfileEditActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(UserProfileEditActivity.this, UserProfile.class);
+                            startActivity(intent);
+                            UserProfileEditActivity.this.finish();
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            Toast.makeText(UserProfileEditActivity.this, "Error: " + fault.getMessage() , Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    });
+
+
+                }
                 return true;
             case R.id.profileLogout:
                 Toast.makeText(this, "logout selected", Toast.LENGTH_SHORT).show();
+                Backendless.UserService.logout( new AsyncCallback<Void>()
+                {
+                    public void handleResponse( Void response )
+                    {
+                        // user has been logged out.
+                        Intent intent = new Intent(UserProfileEditActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        UserProfileEditActivity.this.finish();
+                    }
+
+                    public void handleFault( BackendlessFault fault )
+                    {
+                        // something went wrong and logout failed, to get the error code call fault.getCode()
+                        Toast.makeText(UserProfileEditActivity.this, "Error: " + fault.getMessage() , Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return true;
         }
         return super.onOptionsItemSelected(item);

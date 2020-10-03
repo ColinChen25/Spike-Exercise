@@ -45,12 +45,14 @@ public class HiveEdit extends AppCompatActivity {
                     case R.id.navHives:
                         Intent hiveListIntent = new Intent(HiveEdit.this, HivesList.class);
                         startActivity(hiveListIntent);
+                        HiveEdit.this.finish();
                         break;
-                    case R.id.navSearch:
-                        break;
+//                    case R.id.navSearch:
+//                        break;
                     case R.id.navProfile:
                         Intent intent = new Intent(HiveEdit.this, UserProfile.class);
                         startActivity(intent);
+                        HiveEdit.this.finish();
                         break;
                 }
                 return true;
