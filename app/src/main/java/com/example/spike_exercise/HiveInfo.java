@@ -52,6 +52,7 @@ public class HiveInfo extends AppCompatActivity {
     TextView info_inven_equipment_data;
     TextView info_losses_data;
     TextView info_gains_data;
+    ImageView hive_image;
     String name_of_hive;
     int index;
     Button editButton;
@@ -99,6 +100,7 @@ public class HiveInfo extends AppCompatActivity {
         info_losses_data = findViewById(R.id.info_losses_data);
         info_gains_data = findViewById(R.id.info_gains_data);
         info_profile_pic = findViewById(R.id.info_profile_pic);
+        hive_image = findViewById(R.id.info_profile_pic);
 
         name_of_hive = getIntent().getStringExtra("hive_name");
         info_hive_name.setText(name_of_hive);
@@ -226,6 +228,12 @@ public class HiveInfo extends AppCompatActivity {
 
                 dialog.show();
 
+            }
+        });
+        hive_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Do nothing
             }
         });
     }
